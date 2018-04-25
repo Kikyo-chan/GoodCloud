@@ -2,7 +2,7 @@
 
 ![rchitectur](../images/Architecture.png)
 
-###Introduction
+### Introduction
 
 ​	The first version od the cluster has one controller node and multiple compute nodes, and the controller node itself aslo acts as a compute node.
 
