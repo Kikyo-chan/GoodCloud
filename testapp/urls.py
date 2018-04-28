@@ -3,4 +3,6 @@ from . import views
 
 urlpatterns = [
     url(r'^test_keystone', views.get_keystone),
+    url(r'^$', views.sys_index)
 ]
+
