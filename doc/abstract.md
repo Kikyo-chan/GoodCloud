@@ -26,7 +26,7 @@ Good Cloud Service
 
 - Linux vm services
 
-![rchitectur](images/ubuntu-desktop.png)
+![rchitectur](images/ubuntu_desktop.png)
 
 
 Next Step
