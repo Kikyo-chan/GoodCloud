@@ -35,3 +35,10 @@ centos desktop
 
 matlab service
 
+![eadme](doc/images/openstack_sencond_dev.png)
+
+Secondary development
+
+https://github.com/vajn/GoodCloudJavaService
+
+
