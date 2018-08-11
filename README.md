@@ -15,29 +15,14 @@ service architecture
 
 ###	vitual machine
 
+windows10
 ![eadme](doc/images/Readme1.png)
 
-windows10
-
+linux
 ![eadme](doc/images/Readme2.png)
 
-linux
 
-![eadme](doc/images/ubuntu_desktop_two.png)
-
-ubuntu desktop
-
-![eadme](doc/images/centos_desktop.png)
-
-centos desktop
-
-![eadme](doc/images/matlab_service.png)
-
-matlab service
-
-![eadme](doc/images/openstack_sencond_dev.png)
-
-Secondary development
+Server Side
 
 https://github.com/vajn/GoodCloudJavaService
 

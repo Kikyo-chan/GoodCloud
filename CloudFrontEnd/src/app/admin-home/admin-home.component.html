@@ -1,0 +1,36 @@
+
+
+<app-admin-nav></app-admin-nav>
+<div class="container">
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">用户名</th>
+      <th scope="col">邮箱</th>
+      <th scope="col">管理</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button id="operationGroup" type="button" class="btn btn-secondary dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              操作
+            </button>
+            <div class="dropdown-menu" aria-labelledby="operationGroup">
+              <a class="dropdown-item" href="#">修改信息</a>
+              <a class="dropdown-item" (click)="deleteUser(user)">删除用户</a>
+            </div>
+          </div>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<app-footer></app-footer>
+</div>
