@@ -11,6 +11,9 @@ import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { InstanceListComponent } from './instance-list/instance-list.component';
 import {CommonService} from "./service/common.service";
 import {HttpModule} from "@angular/http";
+import { UserLoginComponent } from './user-login/user-login.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { UserBasicInstanceListComponent } from './user-basic-instance-list/user-basic-instance-list.component';
 
 
 @NgModule({
@@ -21,12 +24,16 @@ import {HttpModule} from "@angular/http";
     NavComponent,
     FooterComponent,
     AdminNavComponent,
-    InstanceListComponent
+    InstanceListComponent,
+    UserLoginComponent,
+    UserBasicInstanceListComponent
 
   ],
 
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot([
       {
@@ -40,7 +47,19 @@ import {HttpModule} from "@angular/http";
       {
         path: 'dashboard_instances',
         component: InstanceListComponent,
-      }
+      },
+      {
+        path: 'user_login',
+        component: UserLoginComponent,
+      },
+      {
+        path: 'user_basic_instance_list',
+        component: UserBasicInstanceListComponent,
+      },
+      {
+        path: '**',
+        component: HomeComponent
+      },
 
     ])
   ],

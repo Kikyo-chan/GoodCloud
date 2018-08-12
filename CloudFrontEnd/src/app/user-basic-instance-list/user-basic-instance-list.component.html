@@ -1,0 +1,37 @@
+
+<app-nav></app-nav>
+
+<div class="container">
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">实例ID</th>
+      <th scope="col">镜像</th>
+      <th scope="col">管理</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let server of servers">
+      <td>{{server.id}}</td>
+      <td>{{server.imgName}}</td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <button id="operationGroup" type="button" class="btn btn-secondary dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            操作
+          </button>
+          <div class="dropdown-menu" aria-labelledby="operationGroup">
+            <a class="dropdown-item" href="{{ server.vncUrl }}" target="_blank">查看控制台</a>
+            <!--<a class="dropdown-item" >删除用户</a>-->
+          </div>
+        </div>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
+<!--<app-footer></app-footer>-->
+
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CommonService} from "../service/common.service";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-home',
@@ -8,13 +9,13 @@ import {CommonService} from "../service/common.service";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public commonService : CommonService) {
+
+
+  constructor(public commonService : CommonService ) {
 
   }
 
   ngOnInit() {
-
-
 
   }
 
