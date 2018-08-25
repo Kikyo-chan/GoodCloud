@@ -45,7 +45,7 @@ export class NavComponent implements OnInit {
     console.log("delete cookie");
     this.cookieService.delete("user_id");
     this.cookieService.delete("username");
-    this.router.navigate(["/"]);
+    // this.router.navigate(["/"]);
     window.location.reload();
   }
 

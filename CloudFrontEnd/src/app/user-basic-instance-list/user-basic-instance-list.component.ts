@@ -26,6 +26,8 @@ export class UserBasicInstanceListComponent implements OnInit {
         .subscribe(response => {
           console.log(response.json());
           this.servers = response.json();
+                //delet all cookie
+                // this.cookieService.deleteAll();
         })
     }
   }

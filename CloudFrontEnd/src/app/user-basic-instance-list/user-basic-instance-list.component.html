@@ -8,6 +8,7 @@
     <tr>
       <th scope="col">实例ID</th>
       <th scope="col">镜像</th>
+      <th scope="col">Ip地址</th>
       <th scope="col">管理</th>
     </tr>
     </thead>
@@ -15,13 +16,14 @@
     <tr *ngFor="let server of servers">
       <td>{{server.id}}</td>
       <td>{{server.imgName}}</td>
+      <td>{{server.float_ip}}</td>
       <td>
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
           <button id="operationGroup" type="button" class="btn btn-secondary dropdown-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             操作
           </button>
           <div class="dropdown-menu" aria-labelledby="operationGroup">
-            <a class="dropdown-item" href="{{ server.vncUrl }}" target="_blank">查看控制台</a>
+            <a class="dropdown-item" href="http://good.ncu.edu.cn:8088/ssh/host/{{server.float_ip}}" target="_blank">查看控制台</a>
             <!--<a class="dropdown-item" >删除用户</a>-->
           </div>
         </div>

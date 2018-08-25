@@ -58,6 +58,7 @@ export class UserLoginComponent implements OnInit {
               this.cookieService.set("username", this.user.name);
               this.cookieService.set("user_id", this.user.id);
 
+
               this.router.navigate(["/"]);
               // alert("登录成功！");
 
