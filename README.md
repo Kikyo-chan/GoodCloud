@@ -17,10 +17,13 @@ GoodLab Cloud System
 
 ![user_console](doc/images/console.png)
 
+- 基于nodejs和xterm的web终端
+
+
+
 - 目前项目结合OpenStack管理系统实现了简单的用户认证和实例使用。
 
 - 开发计划
-    - 终端代理开发，类似于jupyter里面的终端。
     - 基于Ironic做裸机HPC管理部署系统，整理驱动安装脚本，争取一键启动带GPU的高性能裸机。
     - 基于Hadoop实现大数据计算集群服务，用户可以以最便捷的方式启动Hadoop进行计算任务。
     - 基于K8S，kubeflow，gpu 加速设备实现caffe，tensorflow 等深度学习高性能计算集群。
@@ -32,4 +35,10 @@ GoodLab Cloud System
 Server Side
 https://github.com/vajn/GoodCloudJavaService
 
-
+#!/bin/sh
+passwd centos<<EOF
+yourpassword
+yourpassword
+EOF
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+service sshd restart
