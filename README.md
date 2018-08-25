@@ -32,6 +32,7 @@ GoodLab Cloud System
 - 这个仓库里白包含了，OpenStack基本环境部署，GoodCloud前台代码(基于 Angular6开发)    
 - 下面这个仓库是系统的后台代码
   Server Side
-  https://github.com/vajn/GoodCloudJavaService
 
+- Java代码 https://github.com/vajn/GoodCloudJavaService
+- Python代码 https://github.com/vajn/GoodCloudPythonService
 
