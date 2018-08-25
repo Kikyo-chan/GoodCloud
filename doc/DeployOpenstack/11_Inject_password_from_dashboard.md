@@ -4,7 +4,7 @@
 sed -i 's/inject_password=False/inject_password=True/g'
 
 在控制节点
-
+openstack-service restart
 
 - 之后在dashboard中注入初始密码,并开启ssh密码验证服务
 
