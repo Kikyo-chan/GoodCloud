@@ -18,4 +18,4 @@ sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_
 service sshd restart
 ```
 
-![init_image_password](doc/images/init_image_password.png)
+![init_image_password](https://github.com/vajn/GoodCloud/blob/master/doc/images/init_image_password.png)
