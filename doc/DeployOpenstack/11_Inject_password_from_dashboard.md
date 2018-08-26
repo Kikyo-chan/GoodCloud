@@ -11,9 +11,11 @@ openstack-service restart
 ```
 #!/bin/sh
 passwd centos<<EOF
-yourpassword
-yourpassword
+centos
+centos
 EOF
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 service sshd restart
 ```
+
+![init_image_password](doc/images/init_image_password.png)

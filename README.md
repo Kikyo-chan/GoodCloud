@@ -1,9 +1,9 @@
 # GoodCloud
-GoodLab Cloud System
+Good实验室公有云平台架构
 
-### Architecture
+![good_cloud_backend_service](doc/images/good_cloud_backend_service.svg)
 
-![eadme](doc/images/Architecture.png)
+
 
 
 - OpenStack部署
@@ -29,6 +29,9 @@ https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/6_Openstack_Cl
 7、配置集群公网访问
 https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/7_Config_A_PublicIP_To_OurCloud.md
 
+8、OpenStack公共镜像注入初始密码
+https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/11_Inject_password_from_dashboard.md
+
 
 - 二次开发GoodCloud主页(http://good.ncu.edu.cn:8086)
 
@@ -42,6 +45,10 @@ https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/7_Config_A_Pub
 ![user_instance](doc/images/user_instance_list.png)
 
 ![user_console](doc/images/console.png)
+
+- Window 服务
+
+![matlab_service](doc/images/matlab_service.png)
 
 - 基于nodejs和xterm的web终端
 
@@ -60,5 +67,6 @@ https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/7_Config_A_Pub
   Server Side
 
 - Java代码 https://github.com/vajn/GoodCloudJavaService
+
 - Python代码 https://github.com/vajn/GoodCloudPythonService
 
