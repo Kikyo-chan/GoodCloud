@@ -3,11 +3,37 @@ GoodLab Cloud System
 
 ### Architecture
 
-- 整体部署情况，部署基本OpenStack环境可看到 doc 中的 DeployOpenStack
-
 ![eadme](doc/images/Architecture.png)
 
-- GoodCloud 主页
+
+- OpenStack部署
+
+1、部署规划
+https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/1_Cluster_Architecture.md
+
+2、节点的主要服务
+https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/2_Cluster_Service.md
+
+3、操作系统安装
+https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/3_Centos_7_Minimal_Installation.md
+
+4、集群网络规划和配置
+https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/4_ClusterNetworkConfiguration.md
+
+5、packstack部署集群
+https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/5_ClusterInstall_with_packstack.md
+
+6、OpenStack网络初始化
+https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/6_Openstack_Cluster_VitualNetwork.md
+
+7、配置集群公网访问
+https://github.com/vajn/GoodCloud/blob/master/doc/DeployOpenstack/7_Config_A_PublicIP_To_OurCloud.md
+
+
+- 二次开发GoodCloud主页(http://good.ncu.edu.cn:8086)
+
+公开测试账号intel，密码intel.123
+测试用户的虚拟机的账号密码都是centos
 
 ![homepage](doc/images/home_page.png)
 

@@ -1,13 +1,13 @@
 ## Cluster Network Configuration
 
-**In our senario, controller node has two interfaces, interface1 (eno1) is connected to the public network and interface2(eno2) is connected to local swtich that connects all the nodes in the cluster **
+**在我们设计的集群网路架构中，所有节点的网卡二用来做API_NET，网卡一作为EXT_NET**
 
-**Detial Configuration**
+**详细配置**
 
-- Controller(compute1 and gateway)
-
-  - Login with root username and password
-  - Stop first network interface(eno1) from being managed by the NetworkManager deamon
+- 控制节点(充当compute1 和 gateway)
+  - 以root身份登录
+  - 关闭控制节点网卡一的NetworkManager控制
+  - 修改配置文件ifcfg-eno1配置，此网卡用来提供neutron网络的物理接口
 
   ```
   vi /etc/sysconfig/network-scripts/ifcfg-eno1
@@ -16,7 +16,7 @@
   #save and exit
   ```
 
-  - Set a static private IP address for the controller(192.168.0.1 (tip:This must be in line with your actual network environment))
+  - 配置网卡二
 
   ```
   vi /etc/sysconfig/network-scripts/ifcfg-eno2
@@ -27,36 +27,35 @@
   ONBOOT=yes
   NM_CONTROLLED=no
 
-  #save and exit
   ```
 
-  - Restart the network service
+  - 重启控制节点网络服务
 
   ```
   systemctl restart network
   ```
 
-  - Check if you have the internet connection is working!
+  - 检查一下你的网络是否工作正常
 
   ```
   ping good.ncu.edu.cn
   ```
 
-  - Update your repository and install opens-server openssh-clients vim and wget
+  - 安装一些工具
 
   ```
   yum -y update
   yum install -y openssh-server openssh-clients vim wget net-tools
   ```
 
-  - Change the state of SELINUX to disabled
+  - 把selinux服务设置为disabled
 
   ```
   vim /etc/selinux/config
   SELINUX=disabled
   ```
 
-  - Set the domain name for compute nodes. And comment the ipv6 address
+  - 配置所有节点的hosts文件
 
   ```
   vim /etc/hosts
@@ -67,7 +66,7 @@
   #::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
   ```
 
-  - Disable Network Manager and firewall to avoid conflicts with OpenStack
+  - 关闭每个节点的防火墙, NetworkManager进程
 
   ```
   systemctl stop firewalld
@@ -78,13 +77,11 @@
   systemctl restart network
   ```
 
-- NAT Configuration on Controller Node:
+- 端口流量转发配置:
 
-  - **To provide Internet access to other machines in the cluster, you should enable NAT. If all machines in the cluster are getting public IPs by default you can skip thos step**
+  - **配置集群内网机器的外网访问**
 
-  - Enable the NAT forwarding from iptables to give Internet access to compute hosts by executing the
-
-    following commands:
+  - 在登录节点
 
   ```
   yum install -y iptables-services
@@ -101,13 +98,13 @@
   service iptables restart
   ```
 
-  - Check if I-tables has been properly configured:
+  - 查看iptables配置是否生效
 
   ```
   iptables -S
   ```
 
-  the output should include these:
+- 配置正确的输出
 
   ```
   -P INPUT ACCEPT
@@ -117,7 +114,7 @@
   -A FORWARD -o eno2 -j ACCEPT
   ```
 
-  - To make sure you do not lose iptables configuration do the following:
+  - 让iptables配置永久生效:
 
   ```
   vi /etc/sysconfig/iptables-config
@@ -128,7 +125,7 @@
   service iptables restart
   ```
 
-  - Enable forwarding
+  - 启用转发
 
   ```
   vim /etc/sysctl.conf
@@ -136,12 +133,11 @@
   net.ipv4.ip_forward=1
   ```
 
-  - Reboot the controller machine and make sure the changes are persistent.
+  - 重启机器让配置生效
 
-- Compute Nodes
+- 计算节点
 
-  - Login with root username and password
-  - Set a static private IP address for each node
+  - 为每个节点配置一个与控制节点管理网卡一个网段的地址
 
   ```
   vi /etc/sysconfig/network-scripts/ifcfg-eno2
@@ -154,7 +150,7 @@
   ONBOOT=yes
   ```
 
-  - Define some nameservers for your compute nodes
+  - 配置计算节点的nameserver
 
   ```
   vi /etc/resolv.conf
@@ -164,14 +160,13 @@
   nameserver 8.8.8.8
   ```
 
-  - Restart your network service
+  - 重启网络服务
 
   ```
   service network restart
   ```
 
-  - Update your repository and install openssh-server opens-clients vim and wget like controller node
-  - Change the state os SELINUX to disabled like controller node
-  - Set the domain name for compute nodes like controller node
-  - Disable Network Manager and firewall to avoid conflicts with OpenStack Networking Service like controller node
-  - Reboot all machines to make sure the changes are persistent.
+  - 关闭selinux配置
+  - 设置计算节点的主机名
+  - 关闭NetworkManager和防火墙配置
+  - 重启所有机器让配置生效

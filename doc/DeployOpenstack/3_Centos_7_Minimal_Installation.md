@@ -1,22 +1,19 @@
 ## Centos7 Installation
 
-1. Install Centos7 with the following configuration on the controller node of our cluster:
+1. 安装Centos7 mini版镜像:
+ 镜像地址（http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso)
 
-   We need a minimal version of CentOS (download url. http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso)
+2. 安装配置:
 
-2. Install Configuration:
+- 准备配置
+  - 在Bios里面开启硬件虚拟化
 
-- Prepare in advance
-  - To Bios, Enable Virtualizatin
+- 控制节点
+  - 主机名 controller
+  - 选中安装界面监测到的所有硬盘, 选择 "manually configure partition", 删除所有已经存在的硬盘分区, 选择 "automatically generate partitions". 把 home 分区删了，并把所有空间划分给root。
 
+- 在所有的节点做通信阿哥的硬盘操作，并下列方法配置主机名:
+  - 主机名 compute2, compute3, ...
 
-- Controller node
-  - Hostname: controller password: your password
-  - Select all the disk on your node, choose "manually configure partition", delete all the existing partitions, and then click "automatically generate partitions". Adjust the amount of capacity assigned to the root and make it as large as possible. You can remove /home partition if you are not going to use it at all and allocate it's space to /root
-- Do the same for all other nodes in the cluster and set the hostnames as follows:
-  - Hostname: compute2, compute3, …...
-  - Password: yourpassword
-  - do same disk operating as controller node 
-  
   
   

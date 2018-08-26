@@ -1,61 +1,55 @@
-## Openstack Cluster VitualNetwork Config
+## OpenStack SDN dashboard操作，一个私网网段一个公网网段
 
 ![irtualNetwork1](../images/VirtualNetwork10.png)
 
-**The figure above is the topology of the entire network**
+**上图是整个网络的拓扑结构**
 
-Router detail configure
-
+路由的详细配置
 ![irtualNetwork1](../images/VirtualNetwork11.png)
 
 #### Create Step
 
-- Step1:Create public network
+- Step1:创建public网络
 
 ![irtualNetwork](../images/VirtualNetwork1.png)
 
-- Step2:Create public subnet
+- Step2:创建 public 网络
 
 ![irtualNetwork](../images/VirtualNetwork2.png)
 
-- Step3:Configure public subnet
+- Step3:创建 public subnet
 
 ![irtualNetwork](../images/VirtualNetwork3.png)
 
-- Step4:Create private-net
+- Step4:创建 pravite 网络
 
 ![irtualNetwork](../images/VirtualNetwork4.png)
 
 ![irtualNetwork](../images/VirtualNetwork5.png)
 
-- Step5: Create private subnet
+- Step5: 创建 private subnet
 
 ![irtualNetwork](../images/VirtualNetwork6.png)
 
 ![irtualNetwork](../images/VirtualNetwork7.png)
 
-- Step6: Create router
+- Step6: 创建虚拟路由
 
 ![irtualNetwork](../images/VirtualNetwork8.png)
 
-- Step7: Add interface to private network
+- Step7: 给private网络加一个端口
 
 ![irtualNetwork](../images/VirtualNetwork9.png)
 
-# Important information (MTU)
+# MTU配置
 
 ![irtualNetwork1](../images/VirtualNetwork12.png)
 
 ![irtualNetwork1](../images/VirtualNetwork13.png)
 
-**After the network is created, the MTU of the intranet is 1450, and the MTU of the extranet is 1500.**
-
-- These will cause the windows visual machine can not connect to the public network normally
+# 关于默认MTU为1450导致windows无法访问外网的解决办法，给windows网络配置中加入1450的MTU配置即可
 
 
-****
-
-**The specific solution will be explained in the following documents***
 
 
 

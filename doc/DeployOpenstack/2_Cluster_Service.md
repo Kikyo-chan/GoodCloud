@@ -5,11 +5,11 @@
 ![rchitectur](../images/Service001.png)
 
 
--Compute Service
+- Compute Service
 
 ![rchitectur](../images/Service002.png)
 
--Network Service
+- Network Service
 
 ![rchitectur](../images/Service003.png)
 

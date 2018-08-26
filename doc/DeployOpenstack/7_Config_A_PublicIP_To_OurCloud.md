@@ -1,6 +1,6 @@
-## Config a public ip to our cloud
+## 给集群配置一个公网IP让集群提供对外的公有云服务
 
-###Public network card config
+### 控制节点API_NET网卡配置
 
 - example
 
@@ -46,9 +46,9 @@ DNS1=222.204.*.*
 DNS2=202.101.*.*
 ```
 
-***This network card is used to receive access request from public network users***
+***这张网卡用来提供集群服务的公网访问***
 
-### Config dashboard to public access
+### 配置dashboard的外网访问权限
 
 - (/etc/httpd/conf.d/15-horizon_vhost.conf)
 

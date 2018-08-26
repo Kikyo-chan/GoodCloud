@@ -1,8 +1,8 @@
-## Cluster Install with packstack
+## 使用packstack部署集群
 
-Make sure all nodes (controller, compute2, compute3, …) are already configured and ready. Please refer to: <https://www.rdoproject.org/install/quickstart/> if you have not sure about previous steps for your cluster setup.
+确保所有配置正确并生效
 
-- Make sure all node /etc/environment is populated:
+- 确认语言环境设置 /etc/environment :
 
   ```
   vi /etc/environment
@@ -10,21 +10,21 @@ Make sure all nodes (controller, compute2, compute3, …) are already configured
   LANG=en_US.utf-8 LC_ALL=en_US.utf-8
   ```
 
-- Install RDO release:
+- 安装RDO服务
 
   ```
   yum install -y https://www.rdoproject.org/repos/rdo-release.rpm
   yum update -y
   ```
 
-- Install openstack-packstack, a set of scripts to install all peaces of OpenStack, and generate the default settings for packstack:
+- 安装OpenStack PackStack
 
   ```
   yum install -y openstack-packstack
   packstack --gen-answer-file=~/answers.cfg
   ```
 
-- Edit answers.cfg based on your requirements, make sure following setting is done.
+- 通过answers.cfg做集群安装配置
 
   Example:
 
@@ -1397,19 +1397,19 @@ Make sure all nodes (controller, compute2, compute3, …) are already configured
 
   ```
 
-- Install packstack based on your config.
+- 开始安装
 
   ```
   packstack --answer-file=~/answers.cfg
   ```
 
-- Source the keystonerc_admin before using command line for openstack commands. You can see the admin user and password for accessing the dashboard in this file.
+- 以admin身份认证
 
   ```
   source keystonerc_admin
   ```
 
-- If you have a domain name for your public IP address and you want to access your dashboard with domain name follow this instruction.
+- 配置公网IP的dashboard访问权限
 
   ```
   vi /etc/httpd/conf.d/15-horizon_vhost.conf
@@ -1417,7 +1417,7 @@ Make sure all nodes (controller, compute2, compute3, …) are already configured
   ServerAlias 222.204.6.192
   ```
 
-- Now open OpenStack dashboard on your browser [http://YOURDAMIN/dashboard](http://yourdamin/dashboard) for example <http://iaas.clouds.com/dashboard/You> can skip this step if you have aleardy set CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:eno2. If external bridge is not properly created and you have network issues you can do it manually as explained below. Make sure you set CONFIG_NEUTRON_OVS_BRIDGE_IFACES=. first, you should create a bridge.
+- 配置neutron网桥
 
 ```
 vi /etc/sysconfig/network-scripts/ifcfg-br-ex
@@ -1438,8 +1438,7 @@ IPV4_FAILURE_FATAL=no
 IPV6INIT=no
 ```
 
-- Note that you are allocating the IP address of the controller to the bridge now.
-  Now, you introduce controller node as a port to this bridge.cat
+- 将网卡二接到网桥
 
 ```
 vi /etc/sysconfig/network-scripts/ifcfg-eno2
@@ -1455,13 +1454,13 @@ DEVICETYPE=ovs
 OVS_BRIDGE=br-ex
 ```
 
-Restart your network to see everything’s working fine.
+重启你的网络配置
 
 ```
 service network restart
 ```
 
-- Change httpd dir Authority to make public address access dashboard
+- 修改httpd目录权限，重启httpd服务
 
 ```
 cd httpd/
